@@ -8,14 +8,13 @@ public class ProjProduto {
         Scanner ent = new Scanner(System.in);
 
         //É a classe que tem a hash table
-        Catalogo catlgo = new Catalogo();
+        Catalogo catalogo = new Catalogo();
 
         String codigo = null;
         String descricao;
         int verificaDescricao;
         Double preco = null;
         String pais;
-
 
         do {
             System.out.println("\nMenu de opções\n");
@@ -35,7 +34,7 @@ public class ProjProduto {
 
                     case 1:
 
-                        if (catlgo.qtde == catlgo.tabela.length) {
+                        if (catalogo.qtde == catalogo.tabela.length) {
                             System.out.println("Tabela Cheia!!");
                         } else {
 
@@ -71,21 +70,21 @@ public class ProjProduto {
                             }
 
                             //calcula a posição na TH
-                            pos = catlgo.funcaoHash(codigo);
+                            pos = catalogo.funcaoHash(codigo);
 
-                            catlgo.inserirTH(pos, new Produto(codigo, descricao, preco));
+                            catalogo.inserirTH(pos, new Produto(codigo, descricao, preco));
                         }
                         break;
 
                     case 2:
-                        catlgo.mostrarTH();
+                        catalogo.mostrarTH();
                         break;
 
                     case 3:
                         System.out.print("\nDigite o Código do Produto para exclusão: ");
                         codigo = ent.next();
                         codigo = codigo.toUpperCase();
-                        catlgo.remover(codigo);
+                        catalogo.remover(codigo);
                         break;
 
                         // imprime o país do produto
@@ -93,12 +92,12 @@ public class ProjProduto {
                         System.out.print("\nDigite o Código de Produto para buscar o país: ");
                         codigo = ent.next();
                         codigo = codigo.toUpperCase();
-                        pos = catlgo.buscarTH(codigo);
-                        if (pos == catlgo.tabela.length) {
+                        pos = catalogo.buscarTH(codigo);
+                        if (pos == catalogo.tabela.length) {
                             System.out.println("\nProduto NÃO existe na tabela!");
                         } else {
                             String codPais = codigo.substring(0, 3);
-                            pais = catlgo.buscarPais(codPais);
+                            pais = catalogo.buscarPais(codPais);
                             System.out.println("\n O país do produto é "+ pais);
                         }
                         break;
@@ -107,8 +106,8 @@ public class ProjProduto {
                         System.out.print("\nDigite o Código de Produto para pesquisa: ");
                         codigo = ent.next();
                         codigo = codigo.toUpperCase();
-                        pos = catlgo.buscarTH(codigo);
-                        if (pos == catlgo.tabela.length) {
+                        pos = catalogo.buscarTH(codigo);
+                        if (pos == catalogo.tabela.length) {
                             System.out.println("\nProduto NÃO existe na tabela!");
                         } else {
                             System.out.println("\nProduto EXISTE na tabela na posição " + pos);
